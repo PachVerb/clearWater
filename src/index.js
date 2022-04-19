@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-04-16 20:35:29
+ * @LastEditTime: 2022-04-19 10:38:28
  * @Description: 应用打包入口文件
  * @Date: 2022-03-15 00:37:34
  * @Author: wangshan
@@ -37,9 +37,6 @@ const render = () =>
                                 >
                                     {v.children.map((vc) => (
                                         <Route
-                                            {...(vc.meta.isIndex
-                                                ? { index: 'index' }
-                                                : {})}
                                             path={vc.path}
                                             key={vc.name}
                                             element={<vc.component />}

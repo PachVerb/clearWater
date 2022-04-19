@@ -43,6 +43,7 @@
         "webpack-dev-server": "^3.11.2"
     },
     "dependencies": {
+        "@loadable/component": "^5.15.2",
         "@reduxjs/toolkit": "^1.8.0",
         "babel-plugin-syntax-dynamic-import": "^6.18.0",
         "node-sass": "^7.0.0",
