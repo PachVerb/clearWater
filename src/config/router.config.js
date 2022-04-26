@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-04-21 14:07:14
+ * @LastEditTime: 2022-04-26 23:21:38
  * @Description: 路由配置
  * @Date: 2022-03-17 00:30:51
  * @Author: wangshan
@@ -8,52 +8,49 @@
 
 import loadable from '@loadable/component'
 
-import App from '@/App.js'
-import NotFund from '@/pages/common/404'
 import BasicLayout from '@/layout/BasicLayout'
-import UserLayout from '@/layout/UserLayout'
+
 import PageView from '@/layout/PageView'
 
 // 本地公共路由
 export const constantRouterMap = [
-    // 数字大屏首页
-    {
-        path: '/digital',
-        name: 'digital',
-        component: () => import('@/pages/digital/index'),
-        meta: {
-            title: '数字大屏'
-        }
-    },
     //登录
     {
         path: '/login',
-        component: UserLayout,
-        redirect: '/login/login',
-        hidden: true,
-        children: [
-            {
-                path: 'login',
-                name: 'login',
-                component: () => import('@/pages/login/index')
-            }
-        ]
+        name: 'login',
+        component: loadable(() =>
+            import(/*webpackChunkName: "Login" */ '@/pages/login/index')
+        )
     },
     // 异常页
     {
         path: '/404',
         name: 'exception404',
-        component: () => import('@/pages/common/404')
+        component: loadable(() =>
+            import(/*webpackChunkName: "404" */ '@/pages/contract/manage/index')
+        )
     },
     {
         path: '/403',
         name: 'exception403',
-        component: () => import('@/pages/common/403')
+        component: loadable(() =>
+            import(
+                /*webpackChunkName: "ContractManage" */ '@/pages/contract/manage/index'
+            )
+        )
     },
     {
         path: '/500',
         name: 'exception500',
-        component: () => import('@/pages/common/500')
+        component: loadable(() =>
+            import(
+                /*webpackChunkName: "ContractManage" */ '@/pages/contract/manage/index'
+            )
+        )
+    },
+    {
+        path: '/',
+        redirect: '/login'
     }
 ]
 // 异步路由
@@ -71,7 +68,11 @@ export const asyncRouterMap = [
             {
                 path: '/dashboard',
                 name: 'dashboard',
-                component: () => import('@/pages/Dashboard/index'),
+                component: loadable(() =>
+                    import(
+                        /*webpackChunkName: "Home" */ '@/pages/Dashboard/index'
+                    )
+                ),
                 meta: {
                     title: '首页',
                     keepAlive: true
@@ -377,7 +378,7 @@ export const asyncRouterMap = [
                         name: 'storage-manage',
                         component: loadable(() =>
                             import(
-                                /*webpackChunkName: "storage" */ '@/pages/storage/manage/index'
+                                /*webpackChunkName: "storage" */ '@/pages/storge/manage/index'
                             )
                         ),
                         meta: {
@@ -671,37 +672,3 @@ export const adminRouterMap = [
         ]
     }
 ]
-let router = [
-    {
-        path: '/',
-        name: 'home',
-        component: App,
-        children: [
-            {
-                path: '/index',
-                menuname: 'Page-1',
-                name: 'user',
-                component: loadable(() =>
-                    import(/*webpackChunkName: "Page1" */ '@/pages/login/index')
-                )
-            },
-            {
-                path: '/page2',
-                menuname: 'Page-2',
-                name: 'post',
-                component: loadable(() =>
-                    import(
-                        /*webpackChunkName: "Page2"*/ '@/pages/digital/index'
-                    )
-                )
-            }
-        ]
-    },
-    {
-        path: '*',
-        name: '404',
-        component: NotFund
-    }
-]
-
-export default router
