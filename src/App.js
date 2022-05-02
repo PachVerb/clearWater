@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-05-02 23:19:04
+ * @LastEditTime: 2022-05-03 03:30:52
  * @Description:
  * @Date: 2022-03-15 23:30:51
  * @Author: wangshan
@@ -21,22 +21,30 @@ export default class App extends React.Component {
     render() {
         return (
             <Routes>
-                {/* <Route path="/" axact element={BasicLayout}></Route> */}
-                {/* <Route element={<UserLayout />}>
-                    {constantRouterMap.map((route, idx) => {
+                {/* 公共路由配置 */}
+                {constantRouterMap.map((route, idx) => {
+                    if (route.redirect) {
+                        return (
+                            <Route key={idx} element={<route.component />}>
+                                {route.children.map((route, idx) => (
+                                    <Route
+                                        key={idx}
+                                        path={route.path}
+                                        element={<route.component />}
+                                    />
+                                ))}
+                            </Route>
+                        )
+                    } else {
                         return (
                             <Route
-                                key={idx}
+                                key={route.name}
                                 path={route.path}
                                 element={<route.component />}
                             />
                         )
-                    })}
-                </Route> */}
-                {/* <Route path="/" element={<AuthorRequire></AuthorRequire>}>
-                    <RouteHanle routes={asyncRouterMap}></RouteHanle>
-                </Route> */}
-                <Route path="*" element={<div>notthing is here</div>}></Route>
+                    }
+                })}
             </Routes>
         )
     }
