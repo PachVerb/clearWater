@@ -269,3 +269,40 @@
         width: 100%;
     }
 }
+/*403-page*/
+
+.page_403 {
+    width: 100%;
+    height: 100vh;
+    background: #1b1b1b;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg {
+        width: 50vw;
+    }
+    .lightblue {
+        fill: #444;
+    }
+    .eye {
+        cx: calc(115px + 30px * var(--mouse-x));
+        cy: calc(50px + 30px * var(--mouse-y));
+    }
+    #eye-wrap {
+        overflow: hidden;
+    }
+    .error-text {
+        font-size: 120px;
+    }
+    .alarm {
+        animation: alarmOn 0.5s infinite;
+    }
+
+    @keyframes alarmOn {
+        to {
+            fill: darkred;
+        }
+    }
+}
