@@ -6,7 +6,7 @@
  * @LastEditors: wangshan
  */
 import "./index.scss";
-import { ThemeContext } from "@/context/index.js"; // 导入全局context
+import { ThemeContext } from "@/assets/context/index.js"; // 导入全局context
 import { useContext } from "react/cjs/react.development.js";
 export default function Button(props) {
   // 按钮的theme不必通过props传递，方便通过基础Button，定制一般组件.

@@ -1,43 +1,50 @@
 /*
- * @LastEditTime: 2022-05-02 23:19:04
+ * @LastEditTime: 2022-05-03 02:40:57
  * @Description:
  * @Date: 2022-03-15 23:30:51
  * @Author: wangshan
  * @LastEditors: wangshan
  */
 
-import { Routes, Route } from 'react-router-dom' //Switch 更新为 Routes
+import {
+    Routes,
+    Route,
+    BrowserRouter as Router,
+    HashRouter as HRouter
+} from 'react-router-dom' //Switch 更新为 Routes
 
 import { constantRouterMap, asyncRouterMap } from '@/config/router.config.js'
-import UserLayout from '@/layout/UserLayout.jsx'
-import BasicLayout from '@/layout/BasicLayout'
 
-import { AuthorRequire } from '@/components/AuthorRequre/index'
-import { RouteHanle } from '@/core/permission'
+import BasicLayout from '@/layout/BasicLayout'
+import UsesrLayout from './layout/UserLayout'
+import PageA from '@/pages/page1'
+import PageB from '@/pages/page2'
+import Login from '@/pages/login/index'
+import Dashboard from './pages/Dashboard'
+import Production from '@/pages/production/ProductionSearch/index'
 
 import '@/style/global/App.scss'
 
 export default class App extends React.Component {
     render() {
         return (
-            <Routes>
-                {/* <Route path="/" axact element={BasicLayout}></Route> */}
-                {/* <Route element={<UserLayout />}>
-                    {constantRouterMap.map((route, idx) => {
-                        return (
-                            <Route
-                                key={idx}
-                                path={route.path}
-                                element={<route.component />}
-                            />
-                        )
-                    })}
-                </Route> */}
-                {/* <Route path="/" element={<AuthorRequire></AuthorRequire>}>
-                    <RouteHanle routes={asyncRouterMap}></RouteHanle>
-                </Route> */}
-                <Route path="*" element={<div>notthing is here</div>}></Route>
-            </Routes>
+            <HRouter>
+                <Routes>
+                    <Route path="/" element={<BasicLayout />}>
+                        <Route index element={<UsesrLayout />} />
+                        <Route path="teams" element={<Dashboard />}>
+                            <Route path=":teamId" element={<PageA />} />
+                            <Route path="new" element={<PageB />} />
+                            <Route index element={<Production />} />
+                        </Route>
+                    </Route>
+                    <Route path="/login" element={<Login />}></Route>
+                    <Route
+                        path="*"
+                        element={<div>notthing is here</div>}
+                    ></Route>
+                </Routes>
+            </HRouter>
         )
     }
 }

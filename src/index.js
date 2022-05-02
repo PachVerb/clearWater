@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-05-02 22:37:32
+ * @LastEditTime: 2022-05-03 00:19:21
  * @Description: 应用打包入口文件
  * @Date: 2022-03-15 00:37:34
  * @Author: wangshan
@@ -17,13 +17,13 @@ import ErrorBoundary from './components/ErrorBoundary'
 const render = () =>
     ReactDOM.render(
         <React.StrictMode>
-            <BrowserRouter>
-                <Provider store={store}>
-                    <ErrorBoundary>
-                        <App />
-                    </ErrorBoundary>
-                </Provider>
-            </BrowserRouter>
+            {/* <BrowserRouter> */}
+            <Provider store={store}>
+                <ErrorBoundary>
+                    <App />
+                </ErrorBoundary>
+            </Provider>
+            {/* </BrowserRouter> */}
         </React.StrictMode>,
         document.getElementById('root')
     )
