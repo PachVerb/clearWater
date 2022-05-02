@@ -1,17 +1,23 @@
 /*
- * @LastEditTime: 2022-04-27 00:00:41
+ * @LastEditTime: 2022-04-28 00:13:56
  * @Description:
  * @Date: 2022-04-26 23:58:03
  * @Author: wangshan
  * @LastEditors: wangshan
  */
-import { Navigate, Route } from 'react-router-dom'
+import { Navigate, Route, useLocation } from 'react-router-dom'
 export function Auth() {
-    return (
+    // const history = useLocation()
+    console.log(history)
+    return true ? (
         <Route
             path="/"
             element={<Navigate to={'/login'} replace={true} />}
         ></Route>
+    ) : (
+        <Route
+            path="/login"
+            element={<Navigate to={'/login'} replace={true} />}
+        ></Route>
     )
-    // return <Navigate to={'/login'} replace={true} />
 }

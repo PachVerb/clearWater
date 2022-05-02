@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-04-27 00:05:52
+ * @LastEditTime: 2022-04-29 00:45:04
  * @Description:
  * @Date: 2022-03-15 23:30:51
  * @Author: wangshan
@@ -10,7 +10,11 @@ import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom' //Swit
 
 import { constantRouterMap, asyncRouterMap } from '@/config/router.config.js'
 import UserLayout from '@/layout/UserLayout.jsx'
-import { Auth } from '@/utils/author.js'
+import BasicLayout from '@/layout/BasicLayout'
+
+import { AuthorRequire } from '@/components/AuthorRequre/index'
+import { RouteHanle } from '@/core/permission'
+
 import '@/style/global/App.scss'
 
 export default class App extends React.Component {
@@ -18,6 +22,7 @@ export default class App extends React.Component {
         return (
             <BrowserRouter>
                 <Routes>
+                    {/* <Route path="/" axact element={BasicLayout}></Route> */}
                     <Route element={<UserLayout />}>
                         {constantRouterMap.map((route, idx) => {
                             return (
@@ -29,7 +34,9 @@ export default class App extends React.Component {
                             )
                         })}
                     </Route>
-                    {Auth()}
+                    <Route path="/" element={<AuthorRequire></AuthorRequire>}>
+                        <RouteHanle routes={asyncRouterMap}></RouteHanle>
+                    </Route>
                     <Route
                         path="*"
                         element={<div>notthing is here</div>}

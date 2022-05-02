@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-04-18 00:26:02
+ * @LastEditTime: 2022-05-02 16:43:59
  * @Description: redux切片
  * @Date: 2022-03-28 01:05:24
  * @Author: wangshan
@@ -14,7 +14,7 @@ import { createSlice } from '@reduxjs/toolkit'
  * Redux Toolkit 的 createSlice 和 createReducer 中编写 “mutation” 逻辑，
  * 因为它们在内部使用 Immer！如果你在没有 Immer 的 reducer 中编写 mutation 逻辑，它将改变状态并导致错误！
  */
-export const counterSlice = createSlice({
+export const counter = createSlice({
     name: 'counters', // name用作action的type
     initialState: {
         value: 0
@@ -48,7 +48,7 @@ export const counterSlice = createSlice({
             state.value += action.payload // error: 不允许直接修改state对象
         }
     }
-})
+}).reducer // 需要导出注册的是reducer
 
 // 异步thunk
 export const incrementAsync = (amount) => (dispatch) => {
@@ -57,24 +57,24 @@ export const incrementAsync = (amount) => (dispatch) => {
     }, 1000)
 }
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions // action-creator
+// export const { increment, decrement, incrementByAmount } = counterSlice.actions // action-creator
 
-export default counterSlice.reducer
-// 测试获取action-type: increment
-console.log(counterSlice, '\b', increment())
+// export default counterSlice.reducer
+// // 测试获取action-type: increment
+// console.log(counterSlice, '\b', increment())
 
-// createSlice生成了响应aciton的reducer,尝试更新state
-const newState = counterSlice.reducer({ value: 10 }, increment())
-console.log(newState) // {value: 11}
+// // createSlice生成了响应aciton的reducer,尝试更新state
+// const newState = counterSlice.reducer({ value: 10 }, increment())
+// console.log(newState) // {value: 11}
 
-// redux版本
-export const Counter = (state = 0, action) => {
-    switch (action.type) {
-        case 'INCREMENT':
-            return state + 1
-        case 'DECREMENT':
-            return state - 1
-        default:
-            return state
-    }
-}
+// // redux版本
+// export const Counter = (state = 0, action) => {
+//     switch (action.type) {
+//         case 'INCREMENT':
+//             return state + 1
+//         case 'DECREMENT':
+//             return state - 1
+//         default:
+//             return state
+//     }
+// }
