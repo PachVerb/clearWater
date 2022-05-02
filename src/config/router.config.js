@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-05-03 03:41:13
+ * @LastEditTime: 2022-05-03 03:56:16
  * @Description: 路由配置
  * @Date: 2022-03-17 00:30:51
  * @Author: wangshan
@@ -36,7 +36,7 @@ export const constantRouterMap = [
         path: '/404',
         name: 'exception404',
         component: loadable(() =>
-            import(/*webpackChunkName: "404" */ '@/pages/contract/manage/index')
+            import(/*webpackChunkName: "404" */ '@/pages/common/404')
         )
     },
     {
