@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-05-02 16:43:59
+ * @LastEditTime: 2022-05-02 17:03:36
  * @Description: redux切片
  * @Date: 2022-03-28 01:05:24
  * @Author: wangshan
@@ -48,7 +48,7 @@ export const counter = createSlice({
             state.value += action.payload // error: 不允许直接修改state对象
         }
     }
-}).reducer // 需要导出注册的是reducer
+})
 
 // 异步thunk
 export const incrementAsync = (amount) => (dispatch) => {
@@ -78,3 +78,5 @@ export const incrementAsync = (amount) => (dispatch) => {
 //             return state
 //     }
 // }
+
+export default counter.reducer
