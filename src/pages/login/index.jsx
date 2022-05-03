@@ -1,21 +1,41 @@
-import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-
 /*
- * @LastEditTime: 2022-05-04 02:13:07
+ * @LastEditTime: 2022-05-04 03:12:38
  * @Description:
  * @Date: 2022-04-18 18:17:53
  * @Author: wangshan
  * @LastEditors: wangshan
  */
-import { Form, Input, Button, Checkbox } from 'antd'
+
+import { useState } from 'react'
+
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
+import { Form, Input, Button, Checkbox, notification } from 'antd'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+
+import { handleLogin, getUserInfo } from '@/reducers/user/UserSlice'
 
 import '@/pages/login/login.scss'
 
 const NormalLoginForm = () => {
-    const onFinish = (values) => {
+    const [loading, setLoading] = useState(false)
+    const dispath = useDispatch()
+    const navigate = useNavigate()
+
+    const onFinish = async (values) => {
         console.log('Received values of form: ', values)
+        setLoading(true)
+        const res = await dispath(handleLogin(values))
+        console.log(res)
+        await dispath(getUserInfo(res.sessionId))
+        setLoading(false)
+        navigate('/dashboard', {
+            replace: true
+        })
+        notification.success({
+            message: '提示',
+            description: '登陆成功!'
+        })
     }
 
     return (
@@ -68,6 +88,7 @@ const NormalLoginForm = () => {
 
             <Form.Item>
                 <Button
+                    loading={loading}
                     type="primary"
                     htmlType="submit"
                     className="login-form-button"
@@ -79,4 +100,6 @@ const NormalLoginForm = () => {
     )
 }
 
-export default () => <NormalLoginForm />
+const Login = () => <NormalLoginForm />
+
+export default Login

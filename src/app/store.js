@@ -1,15 +1,14 @@
 /*
- * @LastEditTime: 2022-05-02 16:43:32
+ * @LastEditTime: 2022-05-04 02:49:40
  * @Description: 应用状态store
  * @Date: 2022-03-28 00:51:24
  * @Author: wangshan
  * @LastEditors: wangshan
  */
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
-import { createStore } from 'redux'
 
 import counter from '@/reducers/common/counterReducer.js'
-import { User } from '@/reducers/user/UserSlice'
+import { user } from '@/reducers/user/UserSlice'
 /**
  * redux状态机：默认包含一个根级别的reducer
  * 然后根级别的rootReducer在组合其他的切片子级reducer
@@ -36,7 +35,7 @@ export default configureStore({
     reducer: combineReducers({
         // 组织所有reducer
         counter,
-        User
+        user
     })
 })
 

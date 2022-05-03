@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-05-03 04:11:25
+ * @LastEditTime: 2022-05-04 03:29:46
  * @Description:
  * @Date: 2022-04-18 18:04:11
  * @Author: wangshan
@@ -19,7 +19,7 @@ export default function NotFound() {
                             </div>
 
                             <div className="contant_box_404">
-                                <h3 className="h2">Look like you're lost</h3>
+                                <h3 className="h2">Look like your lost</h3>
 
                                 <p>the page you are looking for not avaible!</p>
 

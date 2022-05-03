@@ -9,7 +9,6 @@
 import loadable from '@loadable/component'
 
 import BasicLayout from '@/layout/BasicLayout'
-
 import PageView from '@/layout/PageView'
 import UsesrLayout from '@/layout/UserLayout'
 
