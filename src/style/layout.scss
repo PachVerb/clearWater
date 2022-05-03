@@ -27,3 +27,34 @@
         background-color: rgb(72, 161, 16);
     }
 }
+.layout-container {
+    min-height: 100vh !important;
+}
+.site-layout {
+    & .site-layout-background {
+        padding: 0 24px !important;
+        display: flex;
+        justify-content: space-between;
+    }
+    & .trigger {
+        // padding: 0 24px;
+        font-size: 18px;
+        line-height: 64px;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+    & .trigger:hover {
+        color: #1890ff;
+    }
+
+    & .logo {
+        height: 32px;
+        margin: 16px;
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    & .site-layout-background {
+        background: #fff;
+    }
+}
