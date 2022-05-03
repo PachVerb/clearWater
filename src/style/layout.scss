@@ -13,5 +13,16 @@
     }
     & .layout-right-content {
         flex: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+@media screen and (max-width: 1200px) {
+    .layout-left-bg {
+        display: none;
+    }
+    .layout-right-content {
+        background-color: rgb(72, 161, 16);
     }
 }
