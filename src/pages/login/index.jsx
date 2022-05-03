@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
 /*
- * @LastEditTime: 2022-05-04 01:34:40
+ * @LastEditTime: 2022-05-04 02:13:07
  * @Description:
  * @Date: 2022-04-18 18:17:53
  * @Author: wangshan
@@ -72,9 +72,8 @@ const NormalLoginForm = () => {
                     htmlType="submit"
                     className="login-form-button"
                 >
-                    Log in
+                    登陆
                 </Button>
-                Or <a href="">register now!</a>
             </Form.Item>
         </Form>
     )

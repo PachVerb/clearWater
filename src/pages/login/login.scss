@@ -1,5 +1,12 @@
 .login-form {
     width: 400px;
+    background-color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 0 6px 2px #ccc;
+    & .login-form-button {
+        width: 100%;
+    }
 }
 // iphone SE/5/5s/5c (320px)
 // @media screen and(min-width: 320px) {
