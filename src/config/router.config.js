@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-05-03 04:18:00
+ * @LastEditTime: 2022-05-04 00:31:10
  * @Description: 路由配置
  * @Date: 2022-03-17 00:30:51
  * @Author: wangshan
@@ -58,14 +58,14 @@ export const asyncRouterMap = [
         path: '/',
         name: 'index',
         component: BasicLayout,
-        redirect: '/login/login',
+        redirect: '/login',
         meta: {
             title: '氢流智造'
         },
         children: [
             // 首页
             {
-                path: '/dashboard',
+                path: 'dashboard',
                 name: 'dashboard',
                 component: loadable(() =>
                     import(
@@ -74,29 +74,21 @@ export const asyncRouterMap = [
                 ),
                 meta: {
                     title: '首页',
-                    keepAlive: true,
-                    auth: ['1']
-                }
-            },
-            {
-                path: '/toDigital',
-                name: 'toDigital',
-                redirect: { name: 'digital' },
-                meta: {
-                    title: '数字孪生'
+                    keepAlive: true
                 }
             },
             //合同中心
             {
-                path: '/contract',
+                path: 'contract',
                 name: 'contract',
                 component: PageView,
                 meta: {
-                    title: '合同中心'
+                    title: '合同中心',
+                    auth: ['1']
                 },
                 children: [
                     {
-                        path: '/contract/manage',
+                        path: 'manage',
                         name: 'contract-manage',
                         component: loadable(() =>
                             import(
@@ -109,7 +101,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/contract/intentContract',
+                        path: 'intentContract',
                         name: 'contract-intentContract',
                         component: loadable(() =>
                             import(
@@ -122,7 +114,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/contract/order',
+                        path: 'order',
                         name: 'contract-order',
                         component: loadable(() =>
                             import(
@@ -135,7 +127,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/contract/frozenOrder',
+                        path: 'frozenOrder',
                         name: 'contract-frozenOrder',
                         component: loadable(() =>
                             import(
@@ -148,7 +140,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/contract/outsourcingOrder',
+                        path: 'outsourcingOrder',
                         name: 'contract-outsourcingOrder',
                         component: loadable(() =>
                             import(
@@ -161,7 +153,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/contract/lostContract',
+                        path: 'lostContract',
                         name: 'contract-lostContract',
                         component: loadable(() =>
                             import(
@@ -177,15 +169,16 @@ export const asyncRouterMap = [
             },
             //财务中心
             {
-                path: '/finance',
+                path: 'finance',
                 name: 'finance',
                 component: PageView,
                 meta: {
-                    title: '财务中心'
+                    title: '财务中心',
+                    auth: ['2']
                 },
                 children: [
                     {
-                        path: '/finance/manage',
+                        path: 'manage',
                         name: 'finance-manage',
                         component: loadable(() =>
                             import(
@@ -198,7 +191,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/finance/entry',
+                        path: 'entry',
                         name: 'finance-entry',
                         component: loadable(() =>
                             import(
@@ -211,7 +204,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/finance/receipt',
+                        path: 'receipt',
                         name: 'finance-receipt',
                         component: loadable(() =>
                             import(
@@ -224,7 +217,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/finance/writeoff',
+                        path: 'writeoff',
                         name: 'finance-writeoff',
                         component: loadable(() =>
                             import(
@@ -237,7 +230,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/finance/back',
+                        path: 'back',
                         name: 'finance-back',
                         component: loadable(() =>
                             import(
@@ -253,15 +246,16 @@ export const asyncRouterMap = [
             },
             //排产中心
             {
-                path: '/productionSchedul',
+                path: 'productionSchedul',
                 name: 'productionSchedul',
                 component: PageView,
                 meta: {
-                    title: '排产中心'
+                    title: '排产中心',
+                    auth: ['2']
                 },
                 children: [
                     {
-                        path: '/productionSchedul/manage',
+                        path: 'manage',
                         name: 'productionSchedul-manage',
                         component: loadable(() =>
                             import(
@@ -274,7 +268,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/productionSchedul/orderToProduction',
+                        path: 'orderToProduction',
                         name: 'productionSchedul-orderToProduction',
                         component: loadable(() =>
                             import(
@@ -287,7 +281,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/productionSchedul/strategyManage',
+                        path: 'strategyManage',
                         name: 'productionSchedul-strategyManage',
                         component: loadable(() =>
                             import(
@@ -303,15 +297,16 @@ export const asyncRouterMap = [
             },
             // 生产中心
             {
-                path: '/productionCenter',
+                path: 'productionCenter',
                 name: 'productionCenter',
                 component: PageView,
                 meta: {
-                    title: '生产中心'
+                    title: '生产中心',
+                    auth: ['2']
                 },
                 children: [
                     {
-                        path: '/productionCenter/manage',
+                        path: 'manage',
                         name: 'productionCenter-manage',
                         component: loadable(() =>
                             import(
@@ -324,7 +319,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/productionCenter/productionSearch',
+                        path: 'productionSearch',
                         name: 'productionCenter-productionSearch',
                         component: loadable(() =>
                             import(
@@ -337,7 +332,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/productionCenter/stockList',
+                        path: 'stockList',
                         name: 'productionCenter-stockList',
                         component: loadable(() =>
                             import(
@@ -350,7 +345,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/productionCenter/producTask',
+                        path: 'producTask',
                         name: 'productionCenter-producTask',
                         component: loadable(() =>
                             import(
@@ -366,15 +361,16 @@ export const asyncRouterMap = [
             },
             // 仓储中心
             {
-                path: '/storage',
+                path: 'storage',
                 name: 'storage',
                 component: PageView,
                 meta: {
-                    title: '仓储中心'
+                    title: '仓储中心',
+                    auth: ['2']
                 },
                 children: [
                     {
-                        path: '/storage/manage',
+                        path: 'manage',
                         name: 'storage-manage',
                         component: loadable(() =>
                             import(
@@ -387,7 +383,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/storage/product',
+                        path: 'product',
                         name: 'storage-product',
                         component: loadable(() =>
                             import(
@@ -400,7 +396,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/storage/material',
+                        path: 'material',
                         name: 'storage-material',
                         component: loadable(() =>
                             import(
@@ -413,7 +409,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/storage/type',
+                        path: 'type',
                         name: 'storage-type',
                         component: loadable(() =>
                             import(
@@ -426,7 +422,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/storage/hardwarePack',
+                        path: 'hardwarePack',
                         name: 'storage-hardwarePack',
                         component: loadable(() =>
                             import(
@@ -442,15 +438,16 @@ export const asyncRouterMap = [
             },
             // 数据统计
             {
-                path: '/statistics',
+                path: 'statistics',
                 name: 'statistics',
                 component: PageView,
                 meta: {
-                    title: '数据统计'
+                    title: '数据统计',
+                    auth: ['2']
                 },
                 children: [
                     {
-                        path: '/statistics/userData',
+                        path: 'userData',
                         name: 'statistics-userData',
                         component: loadable(() =>
                             import(
@@ -463,7 +460,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/statistics/report',
+                        path: 'report',
                         name: 'statistics-report',
                         component: loadable(() =>
                             import(
@@ -476,7 +473,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/statistics/workCenter',
+                        path: 'workCenter',
                         name: 'statistics-workCenter',
                         component: loadable(() =>
                             import(
@@ -492,16 +489,17 @@ export const asyncRouterMap = [
             },
             // 数字化工厂配置
             {
-                path: '/system',
+                path: 'system',
                 name: 'system',
                 component: PageView,
                 meta: {
                     title: '数字化工厂配置',
-                    keepAlive: true
+                    keepAlive: true,
+                    auth: ['2']
                 },
                 children: [
                     {
-                        path: '/system/manage',
+                        path: 'manage',
                         name: 'system-manage',
                         component: loadable(() =>
                             import(
@@ -514,7 +512,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/system/organization',
+                        path: 'organization',
                         name: 'system-organization',
                         component: loadable(() =>
                             import(
@@ -527,7 +525,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/system/distributor',
+                        path: 'distributor',
                         name: 'system-distributor',
                         component: loadable(() =>
                             import(
@@ -540,7 +538,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/system/supplier',
+                        path: 'supplier',
                         name: 'system-supplier',
                         component: loadable(() =>
                             import(
@@ -553,7 +551,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/system/flow',
+                        path: 'flow',
                         name: 'system-flow',
                         component: loadable(() =>
                             import(
@@ -566,7 +564,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/system/group',
+                        path: 'group',
                         name: 'system-group',
                         component: loadable(() =>
                             import(
@@ -579,7 +577,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/system/sortingManagement',
+                        path: 'sortingManagement',
                         name: 'system-sortingManagement',
                         component: loadable(() =>
                             import(
@@ -592,7 +590,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/system/abnormalFeedbackConfig',
+                        path: 'abnormalFeedbackConfig',
                         name: 'system-abnormalFeedbackConfig',
                         component: loadable(() =>
                             import(
@@ -605,7 +603,7 @@ export const asyncRouterMap = [
                         }
                     },
                     {
-                        path: '/system/tips',
+                        path: 'tips',
                         name: 'system-tips',
                         component: loadable(() =>
                             import(

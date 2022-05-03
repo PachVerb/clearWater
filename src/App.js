@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-05-03 03:30:52
+ * @LastEditTime: 2022-05-04 00:36:40
  * @Description:
  * @Date: 2022-03-15 23:30:51
  * @Author: wangshan
@@ -16,11 +16,14 @@ import { AuthorRequire } from '@/components/AuthorRequre/index'
 import { RouteHanle } from '@/core/permission'
 
 import '@/style/global/App.scss'
-
+console.log(AuthorRequire(asyncRouterMap))
 export default class App extends React.Component {
     render() {
         return (
             <Routes>
+                {/* 私有路由 */}
+                {AuthorRequire(asyncRouterMap)}
+
                 {/* 公共路由配置 */}
                 {constantRouterMap.map((route, idx) => {
                     if (route.redirect) {
