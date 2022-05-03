@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-05-04 00:36:40
+ * @LastEditTime: 2022-05-04 00:47:44
  * @Description:
  * @Date: 2022-03-15 23:30:51
  * @Author: wangshan
@@ -9,14 +9,11 @@
 import { Routes, Route } from 'react-router-dom' //Switch 更新为 Routes
 
 import { constantRouterMap, asyncRouterMap } from '@/config/router.config.js'
-import UserLayout from '@/layout/UserLayout.jsx'
-import BasicLayout from '@/layout/BasicLayout'
 
 import { AuthorRequire } from '@/components/AuthorRequre/index'
-import { RouteHanle } from '@/core/permission'
 
 import '@/style/global/App.scss'
-console.log(AuthorRequire(asyncRouterMap))
+
 export default class App extends React.Component {
     render() {
         return (

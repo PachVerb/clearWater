@@ -1,29 +1,30 @@
-@import "../common.scss";
+@import '../common.scss';
+@import '~antd/dist/antd.css';
 .sider-wrap {
-  position: fixed;
-  width: 200px;
-  height: 100vh;
-  box-shadow: 0 0 4px 2px #ccc;
-  padding: 20px;
-  & h1 {
-    margin: 0;
-    text-align: center;
-  }
-  & ul {
-    margin: 0;
-    list-style: inside;
-    padding-left: 12px;
-  }
-  & ul > li {
-    padding: 12px;
-    &:hover {
-      background-color: #ccc;
+    position: fixed;
+    width: 200px;
+    height: 100vh;
+    box-shadow: 0 0 4px 2px #ccc;
+    padding: 20px;
+    & h1 {
+        margin: 0;
+        text-align: center;
     }
-  }
+    & ul {
+        margin: 0;
+        list-style: inside;
+        padding-left: 12px;
+    }
+    & ul > li {
+        padding: 12px;
+        &:hover {
+            background-color: #ccc;
+        }
+    }
 }
 .right-content {
-  min-height: 100vh;
-  margin-left: 240px;
-  height: auto;
-  padding: 24px;
+    min-height: 100vh;
+    margin-left: 240px;
+    height: auto;
+    padding: 24px;
 }
