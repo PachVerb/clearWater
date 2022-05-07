@@ -1,10 +1,11 @@
 /*
- * @LastEditTime: 2022-05-04 03:51:47
+ * @LastEditTime: 2022-05-08 00:55:34
  * @Description: 用户状态相关
  * @Date: 2022-04-28 23:29:43
  * @Author: wangshan
  * @LastEditors: wangshan
  */
+import { asyncRouterMap } from '@/config/router.config'
 import { createSlice } from '@reduxjs/toolkit'
 
 // import { asyncRouterMap } from '@/config/router.config'
@@ -12,10 +13,13 @@ import { createSlice } from '@reduxjs/toolkit'
 export const User = createSlice({
     name: 'user',
     initialState: {
-        sessionId: '',
+        sessionId: localStorage.getItem('sessionId') || '',
         auth: null,
         userInfo: null,
-        routesMap: []
+        routesMap:
+            (localStorage.getItem('routes') &&
+                JSON.parse(localStorage.getItem('routes'))) ||
+            []
     },
     reducers: {
         login(state) {
@@ -29,7 +33,11 @@ export const User = createSlice({
                 nickName: 'Pachverb',
                 descrip: 'hello, welcome back'
             }
-            // state.routesMap = asyncRouterMap
+            state.routesMap = JSON.stringify(asyncRouterMap[0].children)
+            localStorage.setItem(
+                'routes',
+                JSON.stringify(asyncRouterMap[0].children)
+            )
             state.auth = ['1', '0']
         }
     }
