@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-05-08 00:37:48
+ * @LastEditTime: 2022-05-08 17:46:05
  * @Description:
  * @Date: 2022-05-07 23:48:37
  * @Author: wangshan
@@ -7,7 +7,7 @@
  */
 import { useEffect } from 'react'
 
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom' //Switch 更新为 Routes
+import { Routes, Route, useNavigate } from 'react-router-dom' //Switch 更新为 Routes
 
 import { AuthorRequire } from '@/components/AuthorRequre/index'
 import { constantRouterMap, asyncRouterMap } from '@/config/router.config.js'

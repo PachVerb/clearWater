@@ -1,14 +1,13 @@
 /*
- * @LastEditTime: 2022-05-08 00:24:14
+ * @LastEditTime: 2022-05-08 18:27:49
  * @Description:
  * @Date: 2022-03-15 23:30:51
  * @Author: wangshan
  * @LastEditors: wangshan
  */
-import { useEffect } from 'react'
 
 import { useSelector } from 'react-redux'
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom' //Switch 更新为 Routes
+import { useLocation } from 'react-router-dom' //Switch 更新为 Routes
 
 import RenderRouter from './components/RenderRouter'
 
