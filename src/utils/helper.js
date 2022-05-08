@@ -1,5 +1,5 @@
 /*
- * @LastEditTime: 2022-05-08 01:40:47
+ * @LastEditTime: 2022-05-08 18:59:03
  * @Description:
  * @Date: 2022-03-19 03:36:03
  * @Author: wangshan
@@ -31,12 +31,14 @@ export function transFormTree(data, root = '/') {
         if (v.children) {
             return {
                 path: prepath,
+                name: v.path,
                 menuname: v.meta.title,
                 children: transFormTree(v.children, prepath)
             }
         } else {
             return {
                 path: prepath,
+                name: v.path,
                 menuname: v.meta.title
             }
         }
