@@ -1,12 +1,14 @@
 /*
- * @LastEditTime: 2022-05-08 00:55:34
+ * @LastEditTime: 2022-05-08 17:36:23
  * @Description: 用户状态相关
  * @Date: 2022-04-28 23:29:43
  * @Author: wangshan
  * @LastEditors: wangshan
  */
-import { asyncRouterMap } from '@/config/router.config'
+
 import { createSlice } from '@reduxjs/toolkit'
+
+import { asyncRouterMap } from '@/config/router.config'
 
 // import { asyncRouterMap } from '@/config/router.config'
 
@@ -18,8 +20,8 @@ export const User = createSlice({
         userInfo: null,
         routesMap:
             (localStorage.getItem('routes') &&
-                JSON.parse(localStorage.getItem('routes'))) ||
-            []
+                localStorage.getItem('routes')) ||
+            null
     },
     reducers: {
         login(state) {
@@ -39,11 +41,20 @@ export const User = createSlice({
                 JSON.stringify(asyncRouterMap[0].children)
             )
             state.auth = ['1', '0']
+        },
+        reset(state) {
+            return (state = {
+                ...state,
+                sessionId: '',
+                auth: null,
+                userInfo: null,
+                routesMap: null
+            })
         }
     }
 })
 // 导出action-type，用于分发action-handle
-export const { login, getUserInfo } = User.actions
+export const { login, getUserInfo, reset } = User.actions
 
 // 异步thunk
 
@@ -71,5 +82,22 @@ export const handleLogin = (preload) => (dispatch, getState) => {
         }, 3000)
     })
 }
+
+// 注销
+export const hanldeLogout = (preload) => (dispath) => {
+    console.log('注销', preload)
+    return new Promise((res) => {
+        setTimeout(() => {
+            console.log('注销')
+            localStorage.clear()
+            dispath(reset())
+            res({
+                message: 'ok',
+                state: 200
+            })
+        }, 3000)
+    })
+}
+
 // 导出Reducer,用于注册到store
 export const user = User.reducer

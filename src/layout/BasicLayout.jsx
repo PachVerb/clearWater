@@ -1,20 +1,17 @@
 /*
- * @LastEditTime: 2022-05-08 02:35:26
+ * @LastEditTime: 2022-05-08 03:24:47
  * @Description: 基本内容布局
  * @Date: 2022-04-20 11:43:01
  * @Author: wangshan
  * @LastEditors: wangshan
  */
-import {
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
-    SettingOutlined
-} from '@ant-design/icons'
-import { Layout, Dropdown, Space, Menu } from 'antd'
+import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'
+import { Layout } from 'antd'
 import { Outlet } from 'react-router-dom'
 
-import '@/style/layout.scss'
+import Nav from './Nav'
 import Menus from '@/components/Menu'
+import '@/style/layout.scss'
 
 const { Header, Sider, Content } = Layout
 class SiderDemo extends React.Component {
@@ -23,53 +20,6 @@ class SiderDemo extends React.Component {
     }
     constructor() {
         super()
-
-        this.menu = (
-            <Menu
-                items={[
-                    {
-                        label: (
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                href="https://www.antgroup.com"
-                            >
-                                1st menu item
-                            </a>
-                        )
-                    },
-                    {
-                        label: (
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                href="https://www.aliyun.com"
-                            >
-                                2nd menu item (disabled)
-                            </a>
-                        ),
-                        icon: <SettingOutlined />,
-                        disabled: true
-                    },
-                    {
-                        label: (
-                            <a
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                href="https://www.luohanacademy.com"
-                            >
-                                3rd menu item (disabled)
-                            </a>
-                        ),
-                        disabled: true
-                    },
-                    {
-                        danger: true,
-                        label: 'a danger item'
-                    }
-                ]}
-            />
-        )
     }
 
     toggle = () => {
@@ -77,6 +27,8 @@ class SiderDemo extends React.Component {
             collapsed: !this.state.collapsed
         })
     }
+
+    loginOut() {}
 
     render() {
         // this.items = this.createMenu()
@@ -105,11 +57,7 @@ class SiderDemo extends React.Component {
                                 onClick: this.toggle
                             }
                         )}
-                        <Dropdown overlay={this.menu}>
-                            <a onClick={(e) => e.preventDefault()}>
-                                <Space>Hover me</Space>
-                            </a>
-                        </Dropdown>
+                        <Nav />
                     </Header>
                     <Content
                         className="site-layout-background"

@@ -1,11 +1,10 @@
 /*
- * @LastEditTime: 2022-05-08 02:43:36
+ * @LastEditTime: 2022-05-08 17:27:18
  * @Description:
  * @Date: 2022-05-08 02:16:10
  * @Author: wangshan
  * @LastEditors: wangshan
  */
-import { useState } from 'react'
 
 import {
     MenuUnfoldOutlined,
@@ -49,8 +48,11 @@ function createMenu(routes) {
 
 export default function Menus() {
     const routes = useSelector((state) => state.user.routesMap)
-    const item = createMenu(transFormTree(routes))
     const navigate = useNavigate()
+    let item = null
+    if (routes) {
+        item = createMenu(transFormTree(JSON.parse(routes)))
+    }
 
     return (
         <Menu
